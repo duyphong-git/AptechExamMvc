@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="col-md-10 mx-auto py-4">
+    <div class="card">
+        <div class="card-header bg-primary text-uppercase text-white">
+            <h4>Aptech Exam MVC</h4>
+        </div>
+        <div class="card-body">
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    Name
+                </dt>
+                <dd class="col-sm-10">
+                    Nguyễn Duy Phong
+                </dd>
+                <dt class="col-sm-2">
+                    Class
+                </dt>
+                <dd class="col-sm-10">
+                    C1906L
+                </dd>
+                <dt class="col-sm-2">
+                    Desciption
+                </dt>
+                <dd class="col-sm-10">
+                    ASP .Net MVC Core
+                </dd>
+
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="button" class="btn btn-primary" value="Go to Question manager" onclick="location.href='@Url.Action("Index", "Question")'" />
+            </form>
+
+        </div>
+    </div>
+</div>

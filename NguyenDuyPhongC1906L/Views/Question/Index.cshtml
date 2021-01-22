@@ -1,0 +1,72 @@
+﻿@model IEnumerable<NguyenDuyPhongC1906L.Models.QuestionViewModel>
+@{
+    int num = 1;
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    ViewData["Title"] = "Question";
+}
+<h1>List Question</h1>
+
+<p>
+    <input type="button" class="btn btn-success" value="Create New" onclick="location.href='@Url.Action("Create", "Question")'" />
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name or type name: <input type="text" name="SearchString" value="@ViewData["QuestionNameFilter"]" />
+                                       <input type="submit" value="Search" class="btn btn-info btn-sm" />
+            <input type="button" class="btn btn-secondary btn-sm" value="Back To Full List" onclick="location.href='@Url.Action("Index", "Question")'" />
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NoSortParam"]">#Num</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["IdSortParm"]">@Html.DisplayNameFor(model => model.Id)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.Name)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["TypeSortParm"]">@Html.DisplayNameFor(model => model.TypeName)</a>
+            </th>
+
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width: 80px;">
+                    <span> @num </span>
+                    @{num++;}
+                </td>
+                <td style="width: 80px;">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td style="width: 200px;">
+                    @Html.DisplayFor(modelItem => item.TypeName)
+                </td>
+                <td style="width: 150px;">
+                    <input type="button" class="btn btn-outline-primary btn-sm" value="Edit" onclick="location.href='@Url.Action("Edit", "Question", new { id = item.Id })'" />
+                    <input type="button" class="btn btn-outline-danger btn-sm" value="Delete" onclick="location.href='@Url.Action("Delete", "Question", new { id = item.Id })'" />
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

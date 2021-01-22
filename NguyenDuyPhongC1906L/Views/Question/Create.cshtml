@@ -1,0 +1,42 @@
+﻿@model NguyenDuyPhongC1906L.Models.QuestionEditModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="col-md-10 mx-auto py-4">
+    <div class="card">
+        <div class="card-header bg-primary text-uppercase text-white">
+            <h4>Add New </h4>
+        </div>
+        <div class="card-body">
+            <form enctype="multipart/form-data" asp-action="Create">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <textarea asp-for="Name" class="form-control" rows="3"> </textarea>
+                            <span asp-validation-for="Name" class="text-danger" require></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md">
+                        <label asp-for="QuestionType" class="control-label"></label>
+                        @Html.DropDownList("QuestionType", (IEnumerable<SelectListItem>)ViewBag.typeList, new { @class = "form-control" })
+                        <span asp-validation-for="QuestionType" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row" style="padding:20px 0px 20px 0px">
+                    <div class="col-md">
+                        <button type="submit" value="Create" class="btn btn-success">Create</button>
+                        <input type="button" class="btn btn-danger" value="Back To List" onclick="location.href='@Url.Action("Index", "Question")'" />
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
